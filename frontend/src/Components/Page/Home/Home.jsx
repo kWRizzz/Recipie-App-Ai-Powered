@@ -3,8 +3,13 @@ import Nav from '../Nav/Nav'
 
 function Home() {
   return (
-    <div>
+    <div 
+      className=' h-screen w-full bg-black'
+    >
         <Nav/>
+        <h1>
+          Tuhai Behn Ki Bhur
+        </h1>
     </div>
   )
 }
