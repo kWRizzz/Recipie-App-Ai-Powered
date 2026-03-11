@@ -1,6 +1,10 @@
 import React from 'react'
+import { Link,useNavigate} from "react-router-dom"
 
 function Register() {
+
+    const navigate=useNavigate()
+
     return (
         <div className=' h-screen w-full bg-slate-100 flex justify-center items-center'>
 
@@ -13,7 +17,7 @@ function Register() {
                         SignUP
                     </h1>
                 </div>
-                <div className='border border-black w-full h-96 p-5 flex justify-center items-center '>
+                <div className='border border-black w-full h-96 p-5 flex flex-col justify-center items-center '>
 
                     <div className='border  w-full '>
                         <form action="">
@@ -66,7 +70,16 @@ function Register() {
 
                         </form>
                     </div>
-
+                    
+                    <div>
+                        <h1>
+                            If Already An Account <div
+                                onClick={()=>navigate('./LogIn')}
+                            >
+                                Login
+                            </div>
+                        </h1>
+                    </div>
                 </div>
 
             </div>

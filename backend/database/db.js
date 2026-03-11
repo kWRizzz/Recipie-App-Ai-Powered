@@ -2,24 +2,16 @@ const mongoose = require('mongoose')
 
 
 
-const connectDb = () => {
-    // try {
-    //     mongoose.connect(`mongodb://127.0.0.1:27017/Recipie`).then(() => {
-    //         console.log(`ConnectedDb`);
-    //     })
-    // } catch (error) {
-    //     console.log(error);
 
-    // }
-
-    mongoose.connect(`mongodb://127.0.0.1:27017/Recipie`).then(()=>{
-        console.log('DataBase Connected Succesfully');
-    }).catch((error)=>{
-        console.log(error);
-    })
+const connectDb = async () => {
+    try {
+        const connect= await mongoose.connect(`${process.env.MONGODBURL}`) 
+        console.log(` Server Has Been Connected To The DataBase ${connect.connection.host}`)
+    } catch (error) {
+        console.log(`Some Error Has Occured While Connecting to the DataBase ${error}`)
+        process.exit(1)
+    }
 }
 
 
-module.exports={
-    connectDb
-}
+module.exports=connectDb

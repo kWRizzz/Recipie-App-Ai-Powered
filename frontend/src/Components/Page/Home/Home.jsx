@@ -4,9 +4,9 @@ import Nav from '../Nav/Nav'
 function Home() {
   return (
     <div 
-      className=' h-screen w-full bg-black'
+      className=' w-full '
     >
-        <Nav/>
+     
         <h1>
           Tuhai Behn Ki Bhur
         </h1>

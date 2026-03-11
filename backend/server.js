@@ -1,17 +1,18 @@
 const express=require('express')
 const cookieparser=require('cookie-parser')
 const authRoutes=require('./routes/auth.route')
-const dataBase=require('./database/db')
+const connectDb=require('./database/db')
+
 require('dotenv').config()
 
 const app=express()
 const PORT=process.env.PORT || 3000
-dataBase.connectDb()
+connectDb()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieparser())
 
-app.use('/api',authRoutes)
+app.use('/api/user',authRoutes)
 
 app.listen(PORT)

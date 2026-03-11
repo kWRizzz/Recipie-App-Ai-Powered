@@ -11,8 +11,22 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Recipie" element={<Recipie />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/Recipie"
+          element={<Recipie />}
+        />
+        <Route
+          path='/SignIn'
+          element={<Register />}
+        />
+        <Route
+          path='/LogIn'
+          element={<Login/>}
+        />
       </Routes>
     </BrowserRouter>
   )
