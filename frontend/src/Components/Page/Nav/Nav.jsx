@@ -1,15 +1,18 @@
 import React from 'react'
 import { useNavigation, useNavigate } from 'react-router-dom'
-
+import Register from '../../Auth/Register'
+import { useState } from 'react'
+import Login from '../../Auth/Login'
 function Nav() {
 
     const navigate = useNavigate()
+
+    const [modal, setModal] = useState(null)
     return (
         <div className='w-full  border-4 border-black h-16  flex justify-between items-center px-32'>
-
             {/* title */}
             <div
-                onClick={()=>navigate('./')}
+                onClick={() => navigate('./')}
                 className=' hover:cursor-pointer hover:underline'
             >
                 <h1
@@ -67,12 +70,36 @@ function Nav() {
             {/* user */}
 
             <div
-                onClick={()=>navigate("./SignIn")}
+                onClick={() => setModal("Login")}
+                className=' cursor-pointer'
             >
                 <h1>
                     SignIn
                 </h1>
             </div>
+
+            {
+                modal=== "Register" 
+                &&
+                (
+                    <Register
+                        closeModal={()=>setModal(null)}
+                        openLogin={()=>setModal("Login")}
+                    />
+                )
+            }
+
+            {
+                modal=== "Login" 
+                &&
+                (
+                    <Login
+                        closeModal={()=>setModal(null)}
+                        openRegister={()=>setModal("Register")}
+                    />
+                )
+            }
+
 
         </div>
     )

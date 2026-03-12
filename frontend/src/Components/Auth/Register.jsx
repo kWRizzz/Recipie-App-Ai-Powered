@@ -1,16 +1,22 @@
 import React from 'react'
-import { Link,useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-function Register() {
+function Register({ closeModal,openLogin }) {
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     return (
-        <div className=' h-screen w-full bg-slate-100 flex justify-center items-center'>
+        <div
+            onClick={closeModal}
+            className=' fixed inset-0 bg-black/40  backdrop-blur-md z-50 w-full bg-slate-100 flex justify-center items-center'
+        >
 
             {/* table */}
 
-            <div className='h-[32rem] w-[32rem] bg-gray-200  border border-1 border-gray-300 rounded-lg shadow-2xl p-5'>
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className='h-[32rem] w-[32rem] bg-gray-200  border border-1 border-gray-300 rounded-lg shadow-2xl p-5'
+            >
 
                 <div className=' border border-black w-full h-20 p-5 flex justify-center items-center'>
                     <h1 className='text-center text-5xl text-gray-950 font-serif font-semibold'>
@@ -21,7 +27,6 @@ function Register() {
 
                     <div className='border  w-full '>
                         <form action="">
-
 
                             <div className='relative transition-transform ease-in-out duration-500 hover:scale-105 '>
                                 <div className='px-2'>
@@ -61,23 +66,28 @@ function Register() {
                                     type="password" />
                             </div>
 
-                            <div className='flex justify-self-center items-center mt-10 transition-transform ease-in-out duration-200 hover:scale-105'>
+                            <div
+                                className='flex justify-self-center items-center mt-10 transition-transform ease-in-out duration-200 hover:scale-105'
+
+                            >
                                 <input className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
-                                 type="submit"
-                                 name=""
-                                 id="" />
+                                    type="submit"
+                                    name=""
+                                    id="" />
                             </div>
 
                         </form>
                     </div>
-                    
+
                     <div>
                         <h1>
-                            If Already An Account <div
-                                onClick={()=>navigate('./LogIn')}
+                            If Already An Account
+                            <button
+                                onClick={openLogin}
+                                className="text-blue-500"
                             >
                                 Login
-                            </div>
+                            </button>
                         </h1>
                     </div>
                 </div>
