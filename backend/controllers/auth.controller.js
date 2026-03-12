@@ -7,7 +7,7 @@ const registerUser = async (req, res) => {
 
     try {
 
-        const { username, email, password } = req.body
+        const { name, email, password } = req.body
 
         const isExistUser = await userModel.findOne({
             email
@@ -16,7 +16,7 @@ const registerUser = async (req, res) => {
         if (isExistUser) return res.status(409).json({
             message: "User Already Exist"
         })
-        if (!username) return res.status(400).json({
+        if (!name) return res.status(400).json({
             message: "Enter username"
         })
         if (!email) return res.status(400).json({
@@ -30,7 +30,7 @@ const registerUser = async (req, res) => {
         const hash = await bcrypt.hash(password, salt)
 
         const User = await userModel.create({
-            username: username,
+            name: name,
             email: email,
             password: hash
         })
@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
             message: "User Registered",
             user: {
                 userid: User._id,
-                username: User.username,
+                username: User.name,
                 email: User.email
             }
         })
@@ -51,7 +51,7 @@ const registerUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            message: "Server Error"
+            message: `Server Error ${error}`
         })
     }
 
@@ -86,7 +86,7 @@ const loginUser = async (req, res) => {
             message:"User Logged In",
             user:{
                 userid:user._id,
-                username:user.username,
+                name:user.name,
                 email:user.email
             }
         })

@@ -2,6 +2,7 @@ const express=require('express')
 const cookieparser=require('cookie-parser')
 const authRoutes=require('./routes/auth.route')
 const connectDb=require('./database/db')
+const cors=require('cors')
 
 require('dotenv').config()
 
@@ -11,7 +12,9 @@ connectDb()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors())
 app.use(cookieparser())
+
 
 app.use('/api/user',authRoutes)
 

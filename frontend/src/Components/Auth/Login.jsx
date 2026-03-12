@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../../redux/authentications/authSice.js";
 import { useDispatch } from "react-redux";
 
-function Login({ closeModal,openRegister }) {
-    
-    const dispatch= useDispatch()
+function Login({ closeModal, openRegister }) {
+
+    const dispatch = useDispatch()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleSubmit= async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         dispatch(loginUser({
             email,
@@ -20,7 +20,7 @@ function Login({ closeModal,openRegister }) {
 
     return (
         <div
-            onClick={ closeModal   }
+            onClick={closeModal}
             className=' fixed inset-0 bg-black/40 backdrop-blur-md z-50 w-full bg-slate-100 flex justify-center items-center'
         >
 
@@ -52,11 +52,11 @@ function Login({ closeModal,openRegister }) {
                                 </div>
                                 <input
                                     value={email}
-                                    onChange={(e)=>setEmail(e.target.value)}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className=' w-full border-2 border-black rounded-md h-12 text-center bg-gray-200 placeholder:bg-gray-200 '
                                     placeholder='Email'
                                     type="email"
-                                     />
+                                />
                             </div>
 
                             {/* userPassword */}
@@ -68,17 +68,20 @@ function Login({ closeModal,openRegister }) {
                                 </div>
                                 <input
                                     value={password}
-                                    onChange={(e)=>setPassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className=' w-full border-2 border-black rounded-md h-12 text-center bg-gray-200 placeholder:bg-gray-200 '
                                     placeholder='Password'
                                     type="password" />
                             </div>
 
                             <div className='flex justify-self-center items-center mt-10 transition-transform ease-in-out duration-200 hover:scale-105'>
-                                <input className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
+                                <input
+                                    onClick={handleSubmit}
+                                    className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
                                     type="submit"
                                     name=""
-                                    id="" />
+                                    id=""
+                                />
                             </div>
 
                         </form>

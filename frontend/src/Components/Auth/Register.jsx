@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../redux/authentications/authSice.js";
 
-function Register({ closeModal,openLogin }) {
+function Register({ closeModal, openLogin }) {
 
-    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        dispatch(registerUser({
+            name,
+            email,
+            password
+        }))
+    }   
+    // console.log(name);
+    
 
     return (
         <div
@@ -26,7 +43,9 @@ function Register({ closeModal,openLogin }) {
                 <div className='border border-black w-full h-96 p-5 flex flex-col justify-center items-center '>
 
                     <div className='border  w-full '>
-                        <form action="">
+                        <form onSubmit={handleSubmit}>
+
+                            {/* userName */}
 
                             <div className='relative transition-transform ease-in-out duration-500 hover:scale-105 '>
                                 <div className='px-2'>
@@ -35,11 +54,15 @@ function Register({ closeModal,openLogin }) {
                                     </h6>
                                 </div>
                                 <input
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     className=' w-full border-2 border-black rounded-md h-12 text-center bg-gray-200 placeholder:bg-gray-200 '
                                     placeholder='UserName'
                                     type="text" />
                             </div>
 
+
+                            {/* userEmail */}
 
                             <div className='relative mt-10 transition-transform ease-in-out delay-75 duration-500 hover:scale-105 '>
                                 <div className='px-2'>
@@ -48,11 +71,15 @@ function Register({ closeModal,openLogin }) {
                                     </h6>
                                 </div>
                                 <input
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className=' w-full border-2 border-black rounded-md h-12 text-center bg-gray-200 placeholder:bg-gray-200 '
                                     placeholder='Email'
                                     type="email" />
                             </div>
 
+
+                            {/* userPassword */}
 
                             <div className='relative mt-10 transition-transform ease-in-out delay-75 duration-500 hover:scale-105'>
                                 <div className='px-2'>
@@ -61,6 +88,8 @@ function Register({ closeModal,openLogin }) {
                                     </h6>
                                 </div>
                                 <input
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className=' w-full border-2 border-black rounded-md h-12 text-center bg-gray-200 placeholder:bg-gray-200 '
                                     placeholder='Password'
                                     type="password" />
@@ -70,7 +99,9 @@ function Register({ closeModal,openLogin }) {
                                 className='flex justify-self-center items-center mt-10 transition-transform ease-in-out duration-200 hover:scale-105'
 
                             >
-                                <input className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
+                                <input
+                                    onClick={handleSubmit}
+                                    className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
                                     type="submit"
                                     name=""
                                     id="" />
