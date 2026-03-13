@@ -1,27 +1,46 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Link,useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/authentications/authSice.js";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 function Login({ closeModal, openRegister }) {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         dispatch(loginUser({
             email,
             password
         }))
+        // if(result.meta.resultStatus === "fulfilled"){
+        //     useNavigate('./')
+        //     closeModal()
+        // }
     }
+
+    const userLogged= useSelector((state)=>state.auth.user)
+
+    useEffect(() => {
+        
+        if(userLogged){
+            closeModal()
+            navigate('/')
+        }
+      
+    }, [userLogged])
+    
 
     return (
         <div
             onClick={closeModal}
-            className=' fixed inset-0 bg-black/40 backdrop-blur-md z-50 w-full bg-slate-100 flex justify-center items-center'
+            className=' fixed inset-0 bg-black/40 backdrop-blur-md z-50 w-full  flex justify-center items-center'
         >
 
             {/* table */}
@@ -39,7 +58,7 @@ function Login({ closeModal, openRegister }) {
                 <div className='border border-black w-full h-96 p-5 flex flex-col justify-center items-center '>
 
                     <div className='border  w-full '>
-                        <form action="">
+                        <form onSubmit={handleSubmit}>
 
 
 
@@ -76,7 +95,6 @@ function Login({ closeModal, openRegister }) {
 
                             <div className='flex justify-self-center items-center mt-10 transition-transform ease-in-out duration-200 hover:scale-105'>
                                 <input
-                                    onClick={handleSubmit}
                                     className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
                                     type="submit"
                                     name=""

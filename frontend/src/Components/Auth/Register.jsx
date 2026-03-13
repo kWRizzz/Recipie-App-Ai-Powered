@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { registerUser } from "../../redux/authentications/authSice.js";
 
 function Register({ closeModal, openLogin }) {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -13,19 +14,37 @@ function Register({ closeModal, openLogin }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         dispatch(registerUser({
             name,
             email,
             password
         }))
+
     }   
+
+    const userRegistered = useSelector((state)=>state.auth.user)
+
+
+    // Navigation toh the Login After Registering to the window 
+
+    useEffect(() => {
+        
+        if(userRegistered){
+            closeModal()
+            openLogin()
+        }
+        
+    }, [userRegistered])
+    
+
     // console.log(name);
     
 
     return (
         <div
             onClick={closeModal}
-            className=' fixed inset-0 bg-black/40  backdrop-blur-md z-50 w-full bg-slate-100 flex justify-center items-center'
+            className=' fixed inset-0 bg-black/40  backdrop-blur-md z-50 w-full  flex justify-center items-center'
         >
 
             {/* table */}
@@ -100,7 +119,7 @@ function Register({ closeModal, openLogin }) {
 
                             >
                                 <input
-                                    onClick={handleSubmit}
+                                    
                                     className='border w-[5.25rem] h-[2rem] rounded-lg shadow-2xl bg-black text-white '
                                     type="submit"
                                     name=""

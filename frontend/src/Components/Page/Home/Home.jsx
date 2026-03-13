@@ -1,15 +1,17 @@
 import React from 'react'
 import Nav from '../Nav/Nav'
+import { SlidingWindow } from '../../../extraComponents/SlidingWindow'
 
 function Home() {
   return (
-    <div 
-      className=' w-full '
+    <div
+      className=' w-full px-[10rem] pt-10'
     >
-     
-        <h1>
-          Tuhai Behn Ki Bhur
-        </h1>
+      <div
+        
+      >
+        <SlidingWindow />
+      </div>
     </div>
   )
 }
