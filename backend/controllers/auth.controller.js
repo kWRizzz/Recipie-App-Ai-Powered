@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const cookieparser = require('cookie-parser')
 const userModel = require('../modeles/user.model')
+const tokenModel= require('../modeles/token.model')
 
 const registerUser = async (req, res) => {
 
@@ -101,6 +102,17 @@ const loginUser = async (req, res) => {
 
 const logoutUser= async (req,res) =>{
     try {
+
+        const token= req.cookies.token
+
+        if(!token) return res.status(400).json({
+            message:"No Token Has been Found"
+        })
+
+        if(token){
+            await tokenModel.create({token})
+        }
+        
         res.clearCookie("token")
         res.status(200).json({
             message:"User Logged Out"
