@@ -1,6 +1,7 @@
 const express=require('express')
 const cookieparser=require('cookie-parser')
 const authRoutes=require('./routes/auth.route')
+const recipieRoutes= require('./routes/recipie.route')
 const connectDb=require('./database/db')
 const cors=require('cors')
 
@@ -17,5 +18,6 @@ app.use(cookieparser())
 
 
 app.use('/api/user',authRoutes)
+app.use('/api/create',recipieRoutes)
 
 app.listen(PORT)
