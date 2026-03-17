@@ -2,13 +2,13 @@ const mongoose= require('mongoose')
 
 const tokenBlackListingSchema= mongoose.Schema({
     token:{
-        type:String
+        type:String,
+        required:[true,"No Token Is provided By the User Either The eToken Has Expired  or The Token is Invalid "]
     }
 },
 {
     timestamps:true
 }
-
 )
 
 

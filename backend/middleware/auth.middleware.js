@@ -25,3 +25,5 @@ const authMiddleWare= async (req,res,next) => {
         process.exit(1)
     }
 }
+
+module.exports=authMiddleWare

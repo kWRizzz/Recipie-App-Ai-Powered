@@ -1,6 +1,7 @@
 const userModel=require('../modeles/user.model')
 const tokenModel=require('../modeles/token.model')
 const recipieModel= require('../modeles/recipie.model')
+const { trace } = require('../routes/recipie.route')
 
 
 const createRecipie= async (req,res) => {
@@ -40,6 +41,19 @@ const createRecipie= async (req,res) => {
     }
 }
 
+
+
+const getRecipie= async (req,res) => {
+    try {
+        
+    } catch (error) {
+        console.log(`Some Error Has Occured While Getting ${error}`);
+        res.status(400).json({
+            message:`Error While Gettin the Recipie ${error}`
+        })
+        
+    }
+}
 
 module.exports={
     createRecipie
