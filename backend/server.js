@@ -18,6 +18,6 @@ app.use(cookieparser())
 
 
 app.use('/api/user',authRoutes)
-app.use('/api/create',recipieRoutes)
+app.use('/api/recipie',recipieRoutes)
 
 app.listen(PORT)
