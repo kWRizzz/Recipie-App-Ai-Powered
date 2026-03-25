@@ -3,7 +3,8 @@ import React from 'react'
 const Recipie = () => {
   return (
     <div>
-        hola ab
+        hola ab recipie page
+        
     </div>
   )
 }

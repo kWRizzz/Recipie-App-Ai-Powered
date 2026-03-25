@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from '../Nav/Nav'
 import { SlidingWindow } from '../../../extraComponents/SlidingWindow'
+import Feature from '../feature/Feature'
 
 function Home() {
   return (
@@ -11,6 +12,13 @@ function Home() {
         
       >
         <SlidingWindow />
+      </div>
+
+      {/* Fetaure */}
+
+      <div>
+
+        <Feature/>
       </div>
     </div>
   )
