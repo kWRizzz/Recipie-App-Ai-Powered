@@ -2,7 +2,11 @@ import React from 'react'
 
 const Instructions = () => {
   return (
-    <div>Instructions</div>
+    <div
+      className='w-full bg-slate-100 '
+    >
+      Instruc
+    </div>
   )
 }
 

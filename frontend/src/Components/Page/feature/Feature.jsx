@@ -1,6 +1,7 @@
 import React from 'react'
 import { TbCircleNumber1Filled } from "react-icons/tb";
 import RecipieDetails from './utils/RecipieDetails';
+import Instructions from './utils/Instructions';
 
 const Feature = () => {
   return (
@@ -24,7 +25,7 @@ const Feature = () => {
           <div
             className=' flex items-center'
           >
-            <TbCircleNumber1Filled 
+            <TbCircleNumber1Filled
               color='white'
             />
 
@@ -38,8 +39,33 @@ const Feature = () => {
           <div
             className=' w-full'
           >
-              <RecipieDetails/>
+            <RecipieDetails />
           </div>
+
+          {/* information */}
+
+
+        </div>
+
+
+        {/* recipie information */}
+
+        <div
+          className='flex flex-col bg-white items-center px-5 rounded-lg'
+        >
+
+          <div
+            className=' flex items-center'
+          >
+            <TbCircleNumber1Filled
+              color='white'
+            />
+
+            <h1>
+              Recipie Detail
+            </h1>
+          </div>
+
         </div>
 
       </div>
