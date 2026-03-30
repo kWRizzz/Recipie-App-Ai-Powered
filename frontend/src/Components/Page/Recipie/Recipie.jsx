@@ -2,7 +2,9 @@ import React from 'react'
 
 const Recipie = () => {
   return (
-    <div>
+    <div
+      className=' bgMove'
+    >
         hola ab recipie page
         
     </div>

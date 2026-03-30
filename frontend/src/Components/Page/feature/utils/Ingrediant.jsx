@@ -138,5 +138,5 @@ const Ingrediant = () => {
   )
 }
 
-export default Ingrediant
+export default Ingrediant 
 
