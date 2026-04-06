@@ -45,7 +45,7 @@ function Nav() {
                     className= ' px-3 py-1 rounded-lg transition-all duration-300 hover:bg-gray-800 hover:scale-105 cursor-pointer'
                 >
                     <h1 className='text-lg font-semibold'>
-                        Check Your Recipies
+                        Check Yeour Recipies
                     </h1>
                 </div>
 
