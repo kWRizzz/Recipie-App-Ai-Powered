@@ -1,73 +1,3 @@
-// import React, { useState } from 'react'
-
-// const Ingrediant = () => {
-
-//   const [text, setText] = useState('')
-//   const [items, setItems] = useState([])
-
-//   const handleSubmit = (e) => {
-//     // e.preventDefault()
-//     setItems([...items, text])
-//     setText("")
-//     console.log(items);
-//   }
-
-//   const handleDelete = (index) => {
-//   const newItems = items.filter((_, i) => i !== index)
-//   setItems(newItems)
-// }
-
-//   return (
-//     <div>
-
-//       <div
-//         className=' mt-3 bg-slate-300'
-//       >
-//         <input
-//           value={text}
-//           onChange={(e) => setText(e.target.value)}
-//           className='  bg-red-50 rounded-md border border-black w-full flex items-center px-2 h-[3rem] mt-2'
-//           type="text" />
-//       </div>
-
-//       <div
-//         className=' mt-3'
-//       >
-//         <input
-//           onClick={() => handleSubmit()}
-//           className=' bg-blue-800 text-center rounded-lg  w-[5rem] '
-//           type="submit" />
-//       </div>
-
-//       <ul>
-//         {
-//           items.map((item, index) => (
-//             <li key={index} className="flex justify-between items-center mt-2">
-
-//               <span>{item}</span>
-
-//               <button
-//                 onClick={() => handleDelete(index)}
-//                 className="bg-red-500 text-white px-2 rounded"
-//               >
-//                 Delete
-//               </button>
-
-//             </li>
-//           ))
-//         }
-//       </ul>
-
-//     </div>
-//   )
-// }
-
-// export default Ingrediant
-
-
-
-
-
 
 
 
@@ -80,6 +10,8 @@ const Ingrediant = () => {
   const [items, setItems] = useState([])
 
   const handleSubmit = (e) => {
+    if(text.trim()==="")return
+    
     setItems([...items, text])
     setText("")
     console.log(items);

@@ -6,6 +6,9 @@ const Instructions = () => {
   const [items, setItems] = useState([])
 
   const handleSubmit = (e) => {
+
+    if(text.trim()==="")return
+
     setItems([...items, text])
     setText("")
     console.log(items);
@@ -28,7 +31,7 @@ const Instructions = () => {
           onChange={(e) => setText(e.target.value)}
           className='bg-gray-800 text-white rounded-lg border border-gray-700 w-full px-3 h-[3rem] focus:ring-2 focus:ring-blue-500 outline-none'
           type="text"
-          placeholder='Enter ingredient'
+          placeholder='Enter Instruction'
         />
       </div>
 
