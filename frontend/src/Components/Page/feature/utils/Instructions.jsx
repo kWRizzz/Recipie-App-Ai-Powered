@@ -4,7 +4,8 @@ const Instructions = () => {
 
   const [text, setText] = useState('')
   const [items, setItems] = useState([])
-
+  const [editText, setEditText] = useState("")
+  const [editTextindex, setEditTextindex] = useState(null)
   const handleSubmit = (e) => {
 
     if(text.trim()==="")return
@@ -19,7 +20,12 @@ const Instructions = () => {
     setItems(newItems)
   }
 
+  const handleEdit= ()=>{
+    const update=[...items]
+    update[editTextindex]=editText
 
+    setItems(update)
+  }
 
   return (
 <div>

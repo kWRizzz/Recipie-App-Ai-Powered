@@ -8,6 +8,9 @@ const Ingrediant = () => {
 
   const [text, setText] = useState('')
   const [items, setItems] = useState([])
+  const [editText, setEditText] = useState("")
+  const [editTextindex, setEditTextindex] = useState(null)
+
 
   const handleSubmit = (e) => {
     if(text.trim()==="")return
@@ -20,6 +23,12 @@ const Ingrediant = () => {
   const handleDelete = (index) => {
     const newItems = items.filter((_, i) => i !== index)
     setItems(newItems)
+  }
+
+  const hadleEdit= ()=>{
+    const update=[...items]
+    update[editTextindex]=editText
+    setItems(update)
   }
 
   return (
