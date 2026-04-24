@@ -11,6 +11,7 @@ export const loginUser = createAsyncThunk(
             },
             body: JSON.stringify(userData)
         })
+        console.log(` response ${res}`)
         const data = await res.json()
         console.log(data);
         return data
@@ -27,10 +28,19 @@ export const registerUser = createAsyncThunk(
             },
             body: JSON.stringify(userData)
         })
-
+        console.log(` response ${res}`)
         const data = await res.json()
         console.log(data)
         return data
+    }
+)
+
+export const logoutUser= createAsyncThunk(
+    "auth/logoutUser",
+    async (userData) => {
+        await fetch('http://localhost:3000/api/user/logout',{
+            method:["GET"]
+        })
     }
 )
 
@@ -74,6 +84,11 @@ const authSlice = createSlice({
 
         builder.addCase(registerUser.rejected, (state) => {
             state.isLoading = false
+        })
+
+        builder.addCase(logoutUser.fulfilled ,(state)=>{
+            state.token=null
+            state.user=null
         })
     }
 })

@@ -6,6 +6,7 @@ const Instructions = () => {
   const [items, setItems] = useState([])
   const [editText, setEditText] = useState("")
   const [editTextindex, setEditTextindex] = useState(null)
+
   const handleSubmit = (e) => {
 
     if(text.trim()==="")return
@@ -26,7 +27,6 @@ const Instructions = () => {
 
     setItems(update)
   }
-
   return (
 <div>
 
