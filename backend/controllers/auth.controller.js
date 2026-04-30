@@ -44,7 +44,7 @@ const registerUser = async (req, res) => {
             message: "User Registered",
             user: {
                 userid: User._id,
-                username: User.name,
+                name: User.name,
                 email: User.email
             }
         })

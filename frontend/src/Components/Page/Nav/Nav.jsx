@@ -12,7 +12,7 @@ function Nav() {
 
     const dispatch= useDispatch()
     const {user} = useSelector((state) => state.auth)
-    console.log(user);
+    // console.log(" this " + user.name);
     
 
     return (
@@ -65,7 +65,7 @@ function Nav() {
                     <div
                         className='text-3xl font-bold tracking-wide bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent'
                     >
-                        Welcome {user.username}
+                        Welcome {user.name}
                     </div>
 
                     <div>
