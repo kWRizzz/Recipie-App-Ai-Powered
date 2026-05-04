@@ -26,7 +26,7 @@ const recipieSchema= mongoose.Schema({
             type:String
         }
     ],
-    instruction:[
+    instructions:[
         {
             type:String
         }
