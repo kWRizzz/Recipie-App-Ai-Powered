@@ -18,7 +18,7 @@ router.post('/create',recipieController.createRecipie)
 router.get('/getrecipie',recipieController.getRecipie)
 
 /*
-**@Route=/api/recipe/getrecipie/:id
+**@Route=/api/recipie/getrecipie/:id
 **@Method=GET
 */
 

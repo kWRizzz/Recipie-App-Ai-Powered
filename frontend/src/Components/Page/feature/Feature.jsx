@@ -6,7 +6,42 @@ import RecipieDetails from './utils/RecipieDetails';
 import Ingrediant from './utils/Ingrediant';
 import RecipieCover from './utils/RecipieCover';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { createRecipie } from "../../../redux/recipies/recipieSlice.js";
+import { useState } from 'react';
+
+
+
 const Feature = () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const finalData={
+      title,
+      description,
+      servings,
+      prepTime,
+      cookTime,
+      ingrediants,
+      instructions
+    }
+
+    console.log(` final daa ${finalData}`);
+    
+    dispatch(createRecipie(finalData))
+  }
+
+  const dispatch = useDispatch();
+  const { recipie, loading } = useSelector((state) => state.recipie);
+  
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [servings, setServings] = useState(null)
+  const [prepTime, setPrepTime] = useState(null)
+  const [cookTime, setCookTime] = useState(null)
+  const [ingrediants, setIngrediants] = useState([])
+  const [instructions, setInstructions] = useState([])
+
   return (
     <div className='w-full flex bg-gradient-to-br from-black via-gray-900 to-gray-800 p-6 rounded-lg text-white'>
 
@@ -24,7 +59,7 @@ const Feature = () => {
 
           {/* detail */}
           <div className='w-full'>
-            <RecipieDetails />
+            <RecipieDetails title={title} description={description} servings={servings} prepTime={prepTime} cookTime={cookTime}   setTitle={setTitle} setDescription={ setDescription} setServings={setServings} setCookTime={setCookTime} setPrepTime={setPrepTime} />
           </div>
         </div>
 
@@ -37,7 +72,7 @@ const Feature = () => {
           </div>
 
           <div>
-            <Ingrediant />
+            <Ingrediant ingrediants={ingrediants} setIngrediants={setIngrediants} />
           </div>
 
         </div>
@@ -52,7 +87,7 @@ const Feature = () => {
           </div>
 
           <div>
-            <Instructions />
+            <Instructions instructions={instructions} setInstructions={setInstructions} />
           </div>
 
         </div>
@@ -78,13 +113,19 @@ const Feature = () => {
           <div
 
           >
-              <RecipieCover/>
+            <RecipieCover />
           </div>
         </div>
 
 
       </div>
 
+      <button
+        onClick={handleSubmit}
+        className="bg-black text-white px-4 py-2 rounded"
+      >
+        {loading ? "Saving..." : "Publish Recipe"}
+      </button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Instructions = () => {
+const Instructions = (props) => {
 
   const [text, setText] = useState('')
   const [items, setItems] = useState([])
@@ -12,6 +12,7 @@ const Instructions = () => {
     if(text.trim()==="")return
 
     setItems([...items, text])
+    props.setInstructions([...items,text])
     setText("")
     console.log(items);
   }

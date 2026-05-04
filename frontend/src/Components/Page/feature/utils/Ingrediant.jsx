@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react'
 
-const Ingrediant = () => {
+const Ingrediant = (props) => {
 
   const [text, setText] = useState('')
   const [items, setItems] = useState([])
@@ -16,6 +16,7 @@ const Ingrediant = () => {
     if(text.trim()==="")return
     
     setItems([...items, text])
+    props.setIngrediants([...items,text])
     setText("")
     console.log(items);
   }

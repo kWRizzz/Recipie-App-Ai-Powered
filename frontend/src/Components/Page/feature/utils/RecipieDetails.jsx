@@ -127,18 +127,21 @@
 
 import React from 'react'
 
-const RecipieDetails = () => {
+const RecipieDetails = (props) => {
   return (
     <div className='w-full'>
 
       {/* Title */}
       <div className='mt-3'>
-        <h6 className='text-sm text-gray-400'>Recipie title</h6>
+        <h6 className='text-sm text-gray-400'>Recipie title  </h6>
 
         <input
           className='bg-gray-800 text-white rounded-lg border border-gray-700 w-full px-3 h-[3rem] mt-2 focus:ring-2 focus:ring-pink-500 outline-none'
           type="text"
           placeholder='eg: Some Details '
+            value={props.title}
+          onChange={(e) => props.setTitle(e.target.value)}
+
         />
       </div>
 
@@ -149,6 +152,8 @@ const RecipieDetails = () => {
         <textarea
           className='bg-gray-800 text-white rounded-lg border border-gray-700 w-full px-3 h-[4.5rem] mt-2 focus:ring-2 focus:ring-purple-500 outline-none'
           placeholder='eg: Some Details '
+          value={props.description}
+          onChange={(e) => props.setDescription(e.target.value)}
         />
       </div>
 
@@ -162,6 +167,9 @@ const RecipieDetails = () => {
             className='mt-2 bg-gray-800 text-white rounded-lg border border-gray-700 w-full h-[3rem] text-center focus:ring-2 focus:ring-blue-500 outline-none'
             type="number"
             placeholder='15'
+            value={props.prepTime}
+            onChange={(e) => props.setPrepTime(e.target.value)}
+
           />
         </div>
 
@@ -172,6 +180,10 @@ const RecipieDetails = () => {
             className='mt-2 bg-gray-800 text-white rounded-lg border border-gray-700 w-full h-[3rem] text-center focus:ring-2 focus:ring-pink-500 outline-none'
             type="number"
             placeholder='40'
+            value={props.cookTime}
+
+            onChange={(e) => props.setCookTime(e.target.value)}
+
           />
         </div>
 
@@ -182,6 +194,9 @@ const RecipieDetails = () => {
             className='mt-2 bg-gray-800 text-white rounded-lg border border-gray-700 w-full h-[3rem] text-center focus:ring-2 focus:ring-purple-500 outline-none'
             type="number"
             placeholder='4'
+            value={props.servings}
+            onChange={(e) => props.setServings(e.target.value)}
+
           />
         </div>
 

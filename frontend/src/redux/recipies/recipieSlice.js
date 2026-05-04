@@ -29,9 +29,9 @@ const recipieSlice = createSlice({
         recipie: {
             title: "",
             description: "",
-            prepTime: null,
-            cookTime: null,
-            servings: null,
+            prepTime: "",
+            cookTime: "",
+            servings: "",
             coverImage: "",
             ingredients: [],
             instructions: []
@@ -60,13 +60,13 @@ const recipieSlice = createSlice({
             state.recipie.instructions.splice(action.payload, 1)
         },
 
-        stateRecipie=(state) => {
+        stateRecipie:(state) => {
             state.recipie = {
                 title: "",
                 description: "",
-                prepTime: null,
-                cookTime: null,
-                servings: null,
+                prepTime: "",
+                cookTime: "",
+                servings: "",
                 coverImage: "",
                 ingredients: [],
                 instructions: []

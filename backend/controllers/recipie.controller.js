@@ -135,7 +135,7 @@ const updateRecipie= async (req,res) => {
 }
 
 
-const deleteRecipe= async (req,res) => {
+const deleteRecipie= async (req,res) => {
     try {
         await recipieModel.fin
     } catch (error) {
